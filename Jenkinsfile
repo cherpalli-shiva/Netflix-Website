@@ -44,5 +44,19 @@ pipeline {
                 }
             }
         }
+        stage ('Deploy to Kubernetes') {
+            steps {
+                withCredentials([
+                    $class: 'AmazonWebServicesCredentialsBinding',
+                    credentialsId: 'aws-creds'
+                ]) {
+                    sh '''
+                        aws eks update-kubeconfig --region us-east-1 --name Netflix
+                        kubectl apply -f k8s/deployment.yaml
+                        kubectl apply -f k8s/service.yaml
+                    '''
+                }
+            }
+        }
     }
 }
