@@ -37,7 +37,7 @@ pipeline {
                     )]) {
                         sh '''
                             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-                            docker build -t cherpalli/netflix-clone:jenkins
+                            docker build -t cherpalli/netflix-clone:jenkins .
                             docker push cherpalli/netflix-clone:jenkins
                         '''
                     }
