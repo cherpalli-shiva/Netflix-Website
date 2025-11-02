@@ -37,15 +37,8 @@ pipeline {
                     )]) {
                         sh '''
                             echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
-
-                            # Export variables to shell
-                            export DOCKER_REPO="cherpallishiva/netflix-clone"
-                            export IMAGE_TAG="${BUILD_NUMBER}"
-
-                            docker build -t $DOCKER_REPO:$IMAGE_TAG .
-                            docker tag $DOKER_REPO:$IMAGE_TAG $DOCKER_REPO:latest
-                            docker push $DOCKER_REPO:$IMAGE_TAG
-                            docker push $DOCKER_REPO:latest
+                            docker build -t cherpalli/netflix-clone:jenkins
+                            docker push cherpalli/netflix-clone:jenkins
                         '''
                     }
                 }
