@@ -5,6 +5,10 @@ pipeline {
         jdk "jdk17"
         nodejs "node"
     }
+    environment {
+        DOCKER_REPO = "cherpallishiva/netflix-clone"
+        IMAGE_TAG   = "${env.BUILD_NUMBER}"
+    }
 
     stages {
         stage ('Checkout') {
