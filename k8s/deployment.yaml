@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: netflix-clone
-        image: cherpalli/netlix-clone:jenkins
+        image: cherpalli/netflix:jenkins
         ports:
         - containerPort: 80
         resources:
